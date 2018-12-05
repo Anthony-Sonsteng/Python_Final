@@ -11,7 +11,7 @@ def memo(message, no_to, send_at):
     """
     send_at = datetime.now() + timedelta(seconds=send_at)
     while datetime.now() < send_at:
-        print("Waiting....")
+        print("Waiting....")        
     client.messages.create(to=no_to,
                            from_=secret.from_,
                            body=message
@@ -24,4 +24,10 @@ auth_token = secret.auth_token
 
 client = Client(account_sid, auth_token)
 
+message = raw_input("Enter your message:")
+    
+no_to = raw_input("Enter the phone number you would like to send your message to:")
 
+send_at = int(raw_input("enter how long you you would like to delay your message:"))
+
+memo(message, no_to, send_at)
